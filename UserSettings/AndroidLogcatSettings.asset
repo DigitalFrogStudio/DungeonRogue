@@ -1,31 +1,13 @@
 {
     "m_SelectedDeviceId": "GQ4T49KNHENFAYWS",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "GQ4T49KNHENFAYWS",
+        "name": "com.DefaultCompany.DungeonRogue",
+        "processId": 24734,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "GQ4T49KNHENFAYWS",
-            "name": "com.DefaultCompany.DungeonRogue",
-            "processId": 19936,
-            "exited": true
-        },
-        {
-            "deviceId": "GQ4T49KNHENFAYWS",
-            "name": "com.DefaultCompany.DungeonRogue",
-            "processId": 25542,
-            "exited": true
-        },
-        {
-            "deviceId": "GQ4T49KNHENFAYWS",
-            "name": "com.DefaultCompany.DungeonRogue",
-            "processId": 26924,
-            "exited": true
-        },
         {
             "deviceId": "GQ4T49KNHENFAYWS",
             "name": "com.miui.home",
@@ -35,14 +17,38 @@
         {
             "deviceId": "GQ4T49KNHENFAYWS",
             "name": "com.DefaultCompany.DungeonRogue",
-            "processId": 28775,
+            "processId": 15688,
             "exited": true
         },
         {
             "deviceId": "GQ4T49KNHENFAYWS",
             "name": "com.DefaultCompany.DungeonRogue",
-            "processId": 30694,
+            "processId": 17981,
             "exited": true
+        },
+        {
+            "deviceId": "GQ4T49KNHENFAYWS",
+            "name": "com.DefaultCompany.DungeonRogue",
+            "processId": 20150,
+            "exited": true
+        },
+        {
+            "deviceId": "GQ4T49KNHENFAYWS",
+            "name": "com.DefaultCompany.DungeonRogue",
+            "processId": 20936,
+            "exited": true
+        },
+        {
+            "deviceId": "GQ4T49KNHENFAYWS",
+            "name": "com.DefaultCompany.DungeonRogue",
+            "processId": 21638,
+            "exited": true
+        },
+        {
+            "deviceId": "GQ4T49KNHENFAYWS",
+            "name": "com.DefaultCompany.DungeonRogue",
+            "processId": 24734,
+            "exited": false
         }
     ],
     "m_Tags": {
