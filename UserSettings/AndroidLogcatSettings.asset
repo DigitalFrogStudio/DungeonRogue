@@ -1,13 +1,38 @@
 {
-    "m_SelectedDeviceId": "",
+    "m_SelectedDeviceId": "GQ4T49KNHENFAYWS",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "GQ4T49KNHENFAYWS",
+        "name": "com.DefaultCompany.DungeonRogue",
+        "processId": 22369,
         "exited": false
     },
     "m_SelectedPriority": 0,
-    "m_KnownPackagesForSerialization": [],
+    "m_KnownPackagesForSerialization": [
+        {
+            "deviceId": "GQ4T49KNHENFAYWS",
+            "name": "com.miui.home",
+            "processId": 2089,
+            "exited": false
+        },
+        {
+            "deviceId": "GQ4T49KNHENFAYWS",
+            "name": "com.DefaultCompany.DungeonRogue",
+            "processId": 17076,
+            "exited": true
+        },
+        {
+            "deviceId": "GQ4T49KNHENFAYWS",
+            "name": "com.DefaultCompany.DungeonRogue",
+            "processId": 17494,
+            "exited": true
+        },
+        {
+            "deviceId": "GQ4T49KNHENFAYWS",
+            "name": "com.DefaultCompany.DungeonRogue",
+            "processId": 22369,
+            "exited": false
+        }
+    ],
     "m_Tags": {
         "m_Entries": [
             {
@@ -41,9 +66,20 @@
         ]
     },
     "m_MemoryViewerState": {
-        "MemoryWindowHeight": 0.0,
-        "MemoryWindowWidth": 0.0,
-        "MemoryTypeEnabled": [],
+        "MemoryWindowHeight": 300.0,
+        "MemoryWindowWidth": 170.0,
+        "MemoryTypeEnabled": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
         "MemoryGroup": 2,
         "Behavior": 0
     },
