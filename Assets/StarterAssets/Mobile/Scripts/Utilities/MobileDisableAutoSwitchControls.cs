@@ -12,24 +12,28 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 #endif
 
-public class MobileDisableAutoSwitchControls : MonoBehaviour
+namespace StarterAssets
 {
-    
+
+    public class MobileDisableAutoSwitchControls : MonoBehaviour
+    {
+
 #if ENABLE_INPUT_SYSTEM && (UNITY_IOS || UNITY_ANDROID) && STARTER_ASSETS_PACKAGES_CHECKED
 
-    [Header("Target")]
-    public PlayerInput playerInput;
+        [Header("Target")]
+        public PlayerInput playerInput;
 
-    void Start()
-    {
-        DisableAutoSwitchControls();
-    }
+        void Start()
+        {
+            DisableAutoSwitchControls();
+        }
 
-    void DisableAutoSwitchControls()
-    {
-        playerInput.neverAutoSwitchControlSchemes = true;
-    }
+        void DisableAutoSwitchControls()
+        {
+            playerInput.neverAutoSwitchControlSchemes = true;
+        }
 
 #endif
-    
+
+    }
 }

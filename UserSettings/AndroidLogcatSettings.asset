@@ -3,29 +3,11 @@
     "m_SelectedPackage": {
         "deviceId": "GQ4T49KNHENFAYWS",
         "name": "com.DefaultCompany.DungeonRogue",
-        "processId": 19936,
+        "processId": 28775,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "GQ4T49KNHENFAYWS",
-            "name": "com.DefaultCompany.DungeonRogue",
-            "processId": 22369,
-            "exited": true
-        },
-        {
-            "deviceId": "GQ4T49KNHENFAYWS",
-            "name": "com.DefaultCompany.DungeonRogue",
-            "processId": 23370,
-            "exited": true
-        },
-        {
-            "deviceId": "GQ4T49KNHENFAYWS",
-            "name": "com.DefaultCompany.DungeonRogue",
-            "processId": 10612,
-            "exited": true
-        },
         {
             "deviceId": "GQ4T49KNHENFAYWS",
             "name": "com.DefaultCompany.DungeonRogue",
@@ -42,6 +24,30 @@
             "deviceId": "GQ4T49KNHENFAYWS",
             "name": "com.DefaultCompany.DungeonRogue",
             "processId": 19936,
+            "exited": true
+        },
+        {
+            "deviceId": "GQ4T49KNHENFAYWS",
+            "name": "com.DefaultCompany.DungeonRogue",
+            "processId": 25542,
+            "exited": true
+        },
+        {
+            "deviceId": "GQ4T49KNHENFAYWS",
+            "name": "com.DefaultCompany.DungeonRogue",
+            "processId": 26924,
+            "exited": true
+        },
+        {
+            "deviceId": "GQ4T49KNHENFAYWS",
+            "name": "com.miui.home",
+            "processId": 2089,
+            "exited": false
+        },
+        {
+            "deviceId": "GQ4T49KNHENFAYWS",
+            "name": "com.DefaultCompany.DungeonRogue",
+            "processId": 28775,
             "exited": false
         }
     ],
