@@ -1,25 +1,13 @@
 {
     "m_SelectedDeviceId": "GQ4T49KNHENFAYWS",
     "m_SelectedPackage": {
-        "deviceId": "GQ4T49KNHENFAYWS",
-        "name": "com.DefaultCompany.DungeonRogue",
-        "processId": 28775,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "GQ4T49KNHENFAYWS",
-            "name": "com.DefaultCompany.DungeonRogue",
-            "processId": 11269,
-            "exited": true
-        },
-        {
-            "deviceId": "GQ4T49KNHENFAYWS",
-            "name": "com.DefaultCompany.DungeonRogue",
-            "processId": 16816,
-            "exited": true
-        },
         {
             "deviceId": "GQ4T49KNHENFAYWS",
             "name": "com.DefaultCompany.DungeonRogue",
@@ -48,7 +36,13 @@
             "deviceId": "GQ4T49KNHENFAYWS",
             "name": "com.DefaultCompany.DungeonRogue",
             "processId": 28775,
-            "exited": false
+            "exited": true
+        },
+        {
+            "deviceId": "GQ4T49KNHENFAYWS",
+            "name": "com.DefaultCompany.DungeonRogue",
+            "processId": 30694,
+            "exited": true
         }
     ],
     "m_Tags": {
