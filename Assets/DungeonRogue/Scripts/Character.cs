@@ -9,7 +9,7 @@ namespace Assets.DungeonRogue.Scripts
         private ItemPicker itemPicker = default;
 
         [SerializeField]
-        private int inventoryCellsAmount = 10;
+        private int inventoryCellsAmount = 5;
 
         public Inventory CharacterInventory { get; private set; }
 
@@ -24,7 +24,6 @@ namespace Assets.DungeonRogue.Scripts
                 return false;
             }
 
-            // add in the inventory
             CharacterInventory.AttemptAdd(itemData);
 
             return true;
