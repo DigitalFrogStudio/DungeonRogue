@@ -1,9 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using Assets.DungeonRogue.Scripts.Item;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.DungeonRogue.Scripts
 {
     public static class ItemsDataStorage
     {
+        private const string ITEM_DATA_SCRIPTABLE_OBJECTS_LOCATION = "ScriptableObjects/ItemsData";
+
         public static readonly Dictionary<int, ItemData> IDToItemDictionary;
 
         static ItemsDataStorage()
@@ -15,24 +19,15 @@ namespace Assets.DungeonRogue.Scripts
 
         private static void FillDictionary()
         {
-            ItemData item;
+            List<ItemDataScriptableObject> itemsDataRaw =
+                new List<ItemDataScriptableObject>(Resources.LoadAll<ItemDataScriptableObject>(ITEM_DATA_SCRIPTABLE_OBJECTS_LOCATION));
 
-            item = new ItemData(1, "Sword", 1);
-            AddItem(item);
+            foreach (ItemDataScriptableObject rawItem in itemsDataRaw)
+            {
+                ItemData data = rawItem.Data;
 
-            item = new ItemData(2, "Long sword", 1);
-            AddItem(item);
-
-            item = new ItemData(3, "Axe", 1);
-            AddItem(item);
-
-            item = new ItemData(4, "Shield", 1);
-            AddItem(item);
-        }
-
-        private static void AddItem(ItemData data)
-        {            
-            IDToItemDictionary.Add(data.ID, data);
+                IDToItemDictionary.Add(data.ID, data);
+            }
         }
     }
 }

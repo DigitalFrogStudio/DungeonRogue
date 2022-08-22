@@ -1,20 +1,29 @@
-﻿namespace Assets.DungeonRogue.Scripts
+﻿using System;
+using UnityEngine;
+
+namespace Assets.DungeonRogue.Scripts
 {
+    [Serializable]
     public struct ItemData
     {
-        public int ID { get; private set; }
+        [SerializeField]
+        private int id;
 
-        public string Name { get; private set; }
+        [SerializeField]
+        private string name;
 
-        public int LimitPerInventoryCell { get; private set; }
+        [SerializeField]
+        private int limitPerInventoryCell;
 
-        public ItemData(int id, string name, int limitPerInventoryCell)
-        {
-            ID = id;
+        [SerializeField]
+        private Sprite icon;
 
-            Name = name;
+        public int ID => id;
 
-            LimitPerInventoryCell = limitPerInventoryCell;
-        }
+        public string Name => name;
+
+        public int LimitPerInventoryCell => limitPerInventoryCell;
+
+        public Sprite Icon => icon;
     }
 }

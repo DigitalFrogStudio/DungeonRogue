@@ -9,9 +9,6 @@ namespace Assets.DungeonRogue.Scripts.UI
         [SerializeField]
         private Character character = default;
 
-        [SerializeField]
-        private List<Sprite> iconsMock = default;
-
         private Inventory characterInventory;
 
         private List<InventoryCellUI> cellsUI;
@@ -45,7 +42,7 @@ namespace Assets.DungeonRogue.Scripts.UI
 
         private void OnInventoryChanged(int index, Cell cellBefore, Cell cellAfter)
         {
-            cellsUI[index].SetIcon(iconsMock[cellAfter.StoredItem.ID - 1]);
+            cellsUI[index].SetIcon(cellAfter.StoredItem.Icon);
         }
     }
 }
