@@ -9,13 +9,19 @@ namespace Assets.DungeonRogue.Scripts.UI
         [SerializeField]
         private Character character = default;
 
+        [SerializeField]
+        private MutualDraggedItemUI draggedItem = default;
+
         private Inventory characterInventory;
 
         private List<InventoryCellUI> cellsUI;
 
+        public MutualDraggedItemUI DraggedItem => draggedItem;
+
         private void Awake()
         {
             Assert.IsNotNull(character);
+            Assert.IsNotNull(draggedItem);
 
             cellsUI = new List<InventoryCellUI>(GetComponentsInChildren<InventoryCellUI>());
         }

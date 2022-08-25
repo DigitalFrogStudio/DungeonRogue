@@ -86,10 +86,18 @@ namespace StarterAssets
 				character.AttemptPickUp(cameraRay);
 			}
 		}
-#else
-	// old input sys if we do decide to have it (most likely wont)...
-#endif
 
+		public void OnSwitchCursorLock(InputValue value)
+        {
+			if (value.isPressed == true)
+			{
+				cursorInputForLook = !cursorInputForLook;
+				cursorLocked = !cursorLocked;
+
+				SetCursorState(cursorLocked);
+			}
+        }
+#endif
 
 		public void MoveInput(Vector2 newMoveDirection)
 		{

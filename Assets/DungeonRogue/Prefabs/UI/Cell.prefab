@@ -215,4 +215,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22c205ed94f8a54489bdff207eb872d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cellImage: {fileID: 2307932310522172195}
   iconImage: {fileID: 5564630165905835211}
+  selectedColor: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
