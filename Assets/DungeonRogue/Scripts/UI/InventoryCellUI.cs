@@ -1,12 +1,18 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Assets.DungeonRogue.Scripts.UI
 {
-    public class InventoryCellUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
-    {        
+    public class InventoryCellUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
+    {
+        public event Action<InventoryCellUI, InventoryCellUI> OnItemDroppedIntoCell;
+
+        public event Action<InventoryCellUI> OnItemToBeDroppedIntoWorld;
+
         [SerializeField]
         private Image cellImage = default;
 
@@ -18,18 +24,16 @@ namespace Assets.DungeonRogue.Scripts.UI
 
         private InventoryUI inventoryUI;
 
-        private MutualDraggedItemUI draggedItem;
+        private MutualDraggedItemUI draggedItemUI;
 
         private Canvas canvas;
 
         private Color initialCellColor;
 
-        private Vector2 initialIconAnchoredPosition;
-
         private bool isCellEngagedMutualItem;
 
         private bool CanBeginDrag => (iconImage.enabled == true) && 
-                                  (draggedItem.IsEngaged == false);
+                                  (draggedItemUI.IsEngaged == false);
 
         public void OnBeginDrag(PointerEventData eventData)
         {
@@ -42,23 +46,9 @@ namespace Assets.DungeonRogue.Scripts.UI
 
             cellImage.color = selectedColor;
 
-            draggedItem.SetIcon(iconImage.sprite);
+            draggedItemUI.SetIcon(iconImage.sprite);
 
-            draggedItem.IconRectTransform.position = iconImage.rectTransform.position;
-        }
-
-        public void OnEndDrag(PointerEventData eventData)
-        {
-            if (isCellEngagedMutualItem == false)
-            {
-                return;
-            }
-
-            isCellEngagedMutualItem = false;
-
-            cellImage.color = initialCellColor;
-
-            draggedItem.SetIcon(null);
+            draggedItemUI.IconRectTransform.position = iconImage.rectTransform.position;
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -68,7 +58,46 @@ namespace Assets.DungeonRogue.Scripts.UI
                 return;
             }
 
-            draggedItem.IconRectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+            draggedItemUI.IconRectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        }
+
+        public void OnEndDrag(PointerEventData eventData)
+        {
+            if (isCellEngagedMutualItem == false)
+            {
+                return;
+            }
+
+
+            isCellEngagedMutualItem = false;
+
+            cellImage.color = initialCellColor;
+
+            draggedItemUI.SetIcon(null);
+
+            List<RaycastResult> raycastResults = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(eventData, raycastResults);
+
+            if (raycastResults.Count == 0)
+            {
+                OnItemToBeDroppedIntoWorld?.Invoke(this);
+            }
+        }
+
+        public void OnDrop(PointerEventData eventData)
+        {
+            if (draggedItemUI.IsEngaged == false)
+            {
+                return;
+            }
+
+            InventoryCellUI sourceInventoryCell = eventData.pointerDrag.GetComponent<InventoryCellUI>();
+            if (sourceInventoryCell == null)
+            {
+                return;
+            }
+
+            OnItemDroppedIntoCell(sourceInventoryCell, this);
         }
 
         public void SetIcon(Sprite iconSprite)
@@ -97,15 +126,13 @@ namespace Assets.DungeonRogue.Scripts.UI
             Assert.IsNotNull(inventoryUI);
 
             iconImage.sprite = null;
-
-            initialIconAnchoredPosition = iconImage.rectTransform.anchoredPosition;
         }
 
         private void Start()
         {
             initialCellColor = cellImage.color;
 
-            draggedItem = inventoryUI.DraggedItem;
+            draggedItemUI = inventoryUI.DraggedItem;
 
             SetIcon(null);
         }

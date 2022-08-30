@@ -11,6 +11,9 @@ namespace Assets.DungeonRogue.Scripts
         [SerializeField]
         private int inventoryCellsAmount = 5;
 
+        [SerializeField]
+        private ItemDropper characterItemDropper = default;
+
         public Inventory CharacterInventory { get; private set; }
 
         public bool AttemptPickUp(Ray ray)
@@ -27,6 +30,11 @@ namespace Assets.DungeonRogue.Scripts
             CharacterInventory.AttemptAdd(itemData);
 
             return true;
+        }
+
+        public void DropItem(ItemData itemData)
+        {
+            characterItemDropper.Drop(itemData);
         }
 
         private void Awake()

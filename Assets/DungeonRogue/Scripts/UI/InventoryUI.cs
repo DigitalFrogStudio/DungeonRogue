@@ -31,24 +31,49 @@ namespace Assets.DungeonRogue.Scripts.UI
             characterInventory = character.CharacterInventory;
 
             characterInventory.OnInventoryChanged += OnInventoryChanged;
-        }
 
-        private void OnEnable()
-        {
-            if (characterInventory != null)
-            { 
-                characterInventory.OnInventoryChanged += OnInventoryChanged;
+            foreach (InventoryCellUI cellUI in cellsUI)
+            {
+                cellUI.OnItemDroppedIntoCell += OnItemDroppedIntoCell;
+                cellUI.OnItemToBeDroppedIntoWorld += OnItemToBeDroppedIntoWorld;
             }
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             characterInventory.OnInventoryChanged -= OnInventoryChanged;
+
+            foreach (InventoryCellUI cellUI in cellsUI)
+            {
+                cellUI.OnItemDroppedIntoCell -= OnItemDroppedIntoCell;
+                cellUI.OnItemToBeDroppedIntoWorld -= OnItemToBeDroppedIntoWorld;
+            }
         }
 
         private void OnInventoryChanged(int index, Cell cellBefore, Cell cellAfter)
         {
             cellsUI[index].SetIcon(cellAfter.StoredItem.Icon);
+        }
+
+        private void OnItemDroppedIntoCell(InventoryCellUI sourceCellUI, InventoryCellUI targetCellUI)
+        {
+            int sourceIndex = cellsUI.IndexOf(sourceCellUI);
+            int targetIndex = cellsUI.IndexOf(targetCellUI);
+
+            characterInventory.Swap(sourceIndex, targetIndex);
+        }
+
+        private void OnItemToBeDroppedIntoWorld(InventoryCellUI itemCellUI)
+        {
+            int itemIndex = cellsUI.IndexOf(itemCellUI);
+
+            ItemData itemToBeDroppedData;
+            bool isRemovedFromInventory = characterInventory.RemoveOne(itemIndex, out itemToBeDroppedData);
+
+            if (isRemovedFromInventory == true)
+            { 
+                character.DropItem(itemToBeDroppedData);
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 namespace Assets.DungeonRogue.Scripts
@@ -84,7 +85,7 @@ namespace Assets.DungeonRogue.Scripts
         {
             itemData = new ItemData();
 
-            if (inventoryCells[index].IsEmpty)
+            if (inventoryCells[index].IsEmpty == true)
             {
                 return false;
             }
@@ -97,9 +98,9 @@ namespace Assets.DungeonRogue.Scripts
 
                 inventoryCells[index] = cellAfter;
 
-                OnInventoryChanged?.Invoke(index, cellBefore, cellAfter);
-
                 itemData = inventoryCells[index].StoredItem;
+
+                OnInventoryChanged?.Invoke(index, cellBefore, cellAfter);
 
                 return true;
             }
@@ -125,25 +126,74 @@ namespace Assets.DungeonRogue.Scripts
             return true;
         }
 
+        public int Remove(int index, out ItemData itemData)
+        {
+            itemData = new ItemData();
+
+            if (inventoryCells[index].IsEmpty == true)
+            {
+                return 0;
+            }
+            else
+            {
+                Cell cellBefore = inventoryCells[index];
+
+                Cell cellAfter = new Cell();
+
+                inventoryCells[index] = cellAfter;
+
+                itemData = inventoryCells[index].StoredItem;
+
+                OnInventoryChanged?.Invoke(index, cellBefore, cellAfter);
+
+                return cellBefore.Amount;
+            }
+        }
+
+        public void Swap(int firstIndex, int secondIndex)
+        {
+            Cell tmpCell = inventoryCells[firstIndex];
+
+            inventoryCells[firstIndex] = inventoryCells[secondIndex];
+            OnInventoryChanged?.Invoke(firstIndex, inventoryCells[secondIndex], inventoryCells[firstIndex]);
+
+            inventoryCells[secondIndex] = tmpCell;
+            OnInventoryChanged?.Invoke(secondIndex, inventoryCells[firstIndex], inventoryCells[secondIndex]);
+        }
+
         public void LogInventory()
         {
-            string inventoryString = "Inventory contains:";
-
+            StringBuilder inventoryStringBuilder = new StringBuilder("Inventory contains:");
+            
             for (int i = 0; i < cellsAmount; i++)
             {
-                inventoryString += "\nCell №" + i + ": ";
+                inventoryStringBuilder.Append("\nCell №" + i + ": ");
 
                 if (inventoryCells[i].IsEmpty)
                 {
-                    inventoryString += "Empty";
+                    inventoryStringBuilder.Append("Empty");
                 }
                 else
                 {
-                    inventoryString += inventoryCells[i].Amount.ToString() + " thing(s) of id = " + inventoryCells[i].StoredItem.ID;
+                    inventoryStringBuilder.Append(inventoryCells[i].Amount.ToString() + " thing(s) of id = " + inventoryCells[i].StoredItem.ID);
                 }
             }
 
-            Debug.Log(inventoryString);
+            Debug.Log(inventoryStringBuilder.ToString());
+        }
+
+        private bool ValidateIndex(int index)
+        {
+            if ((index > 0) && (index < inventoryCells.Count))
+            {
+                return true;
+            }
+            else
+            {
+                Debug.LogWarning("Attempt to address an index out of the inventory list range!");
+
+                return false;
+            }
         }
     }
 }
