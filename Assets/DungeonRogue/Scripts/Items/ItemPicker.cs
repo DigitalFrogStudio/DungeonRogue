@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.DungeonRogue.Scripts
+namespace Assets.DungeonRogue.Scripts.Items
 {
     public class ItemPicker : MonoBehaviour
     {

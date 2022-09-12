@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Assets.DungeonRogue.Scripts
+namespace Assets.DungeonRogue.Scripts.Items
 {
     [Serializable]
     public struct ItemData

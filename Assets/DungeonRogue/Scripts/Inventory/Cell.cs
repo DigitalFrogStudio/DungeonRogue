@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.DungeonRogue.Scripts.Items;
+using UnityEngine;
 
 namespace Assets.DungeonRogue.Scripts
 {

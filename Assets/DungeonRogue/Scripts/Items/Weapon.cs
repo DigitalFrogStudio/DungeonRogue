@@ -1,4 +1,4 @@
-﻿namespace Assets.DungeonRogue.Scripts
+﻿namespace Assets.DungeonRogue.Scripts.Items
 {
     public class Weapon : OrdinaryItem
     {

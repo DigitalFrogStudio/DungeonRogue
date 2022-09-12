@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.DungeonRogue.Scripts.Items;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
@@ -98,7 +99,7 @@ namespace Assets.DungeonRogue.Scripts
 
                 inventoryCells[index] = cellAfter;
 
-                itemData = inventoryCells[index].StoredItem;
+                itemData = cellBefore.StoredItem;
 
                 OnInventoryChanged?.Invoke(index, cellBefore, cellAfter);
 
@@ -142,7 +143,7 @@ namespace Assets.DungeonRogue.Scripts
 
                 inventoryCells[index] = cellAfter;
 
-                itemData = inventoryCells[index].StoredItem;
+                itemData = cellBefore.StoredItem;
 
                 OnInventoryChanged?.Invoke(index, cellBefore, cellAfter);
 

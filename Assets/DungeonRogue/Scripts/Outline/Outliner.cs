@@ -13,6 +13,8 @@ namespace Assets.DungeonRogue.Scripts
 
         private OutlinableObject currentOutlinable;
 
+        private bool hasAcquiredObject;
+
         private void Awake()
         {
             Assert.IsNotNull(playerCamera);
@@ -34,7 +36,7 @@ namespace Assets.DungeonRogue.Scripts
             }
             else
             {
-                TryFreeCurrent();
+                FreeCurrent();
             }
         }
 
@@ -45,18 +47,25 @@ namespace Assets.DungeonRogue.Scripts
             bool isContainsPointable = hitGameObject.TryGetComponent(out OutlinableObject outlinable);
             if (isContainsPointable == true)
             {
-                currentOutlinable = outlinable;
+                if (hasAcquiredObject == false)
+                { 
+                    hasAcquiredObject = true;
 
-                outlinable.SetOutline(true);
+                    currentOutlinable = outlinable;
+
+                    outlinable.SetOutline(true);
+                }
             }
             else
             {
-                TryFreeCurrent();
+                FreeCurrent();
             }
         }
 
-        private void TryFreeCurrent()
+        private void FreeCurrent()
         {
+            hasAcquiredObject = false;
+            
             if (currentOutlinable != null)
             {
                 currentOutlinable.SetOutline(false);

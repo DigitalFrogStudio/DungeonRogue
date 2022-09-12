@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.DungeonRogue.Scripts.Items;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace Assets.DungeonRogue.Scripts
@@ -15,6 +16,8 @@ namespace Assets.DungeonRogue.Scripts
         private ItemDropper characterItemDropper = default;
 
         public Inventory CharacterInventory { get; private set; }
+
+        public Equipment CharacterEquipment { get; private set; }
 
         public bool AttemptPickUp(Ray ray)
         {
@@ -42,6 +45,8 @@ namespace Assets.DungeonRogue.Scripts
             Assert.IsNotNull(itemPicker);
 
             CharacterInventory = new Inventory(inventoryCellsAmount);
+
+            CharacterEquipment = new Equipment();
         }
 
         private void Start()

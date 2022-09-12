@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace Assets.DungeonRogue.Scripts
+namespace Assets.DungeonRogue.Scripts.Items
 {
     public abstract class ItemBehaviour<T> : MonoBehaviour, IItem where T : IItem
     {

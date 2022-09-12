@@ -1,7 +1,4 @@
-﻿using UnityEditor;
-using UnityEngine;
-
-namespace Assets.DungeonRogue.Scripts
+﻿namespace Assets.DungeonRogue.Scripts.Items
 {
     public class OrdinaryItemBehaviour : ItemBehaviour<OrdinaryItem>, IPickable
     {

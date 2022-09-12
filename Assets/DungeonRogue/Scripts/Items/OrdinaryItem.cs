@@ -1,4 +1,4 @@
-﻿namespace Assets.DungeonRogue.Scripts
+﻿namespace Assets.DungeonRogue.Scripts.Items
 {
     public class OrdinaryItem : IItem
     {
@@ -6,7 +6,7 @@
 
         public OrdinaryItem(int id)
         {
-            data = ItemsDataStorage.IDToItemDictionary[id];
+            data = ItemsDataStorage.IDToItemDataDictionary[id];
         }
 
         public ItemData GetItemData()

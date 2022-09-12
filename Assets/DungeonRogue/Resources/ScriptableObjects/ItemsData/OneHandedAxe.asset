@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5c12e6432b4bcc4097e59a1e42f0637, type: 3}
-  m_Name: ShieldItemData
+  m_Name: OneHandedAxe
   m_EditorClassIdentifier: 
+  prefab: {fileID: 4377290826532620188, guid: 8c61de5b4711f5d4c966a5f47c110530, type: 3}
   data:
-    id: 4
-    name: Shield
+    id: 3
+    name: Axe
     limitPerInventoryCell: 1
-    icon: {fileID: 21300000, guid: 83d69342f8a37bd4e853f93a6d9a5088, type: 3}
+    icon: {fileID: 21300000, guid: 21c01fa3467e0374c8ff4aa4df6e7c1f, type: 3}

@@ -1,4 +1,4 @@
-﻿namespace Assets.DungeonRogue.Scripts
+﻿namespace Assets.DungeonRogue.Scripts.Items
 {
     public interface IItem
     {

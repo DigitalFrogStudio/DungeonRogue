@@ -7,11 +7,11 @@ using UnityEngine.UI;
 
 namespace Assets.DungeonRogue.Scripts.UI
 {
-    public class InventoryCellUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
+    public abstract class ItemCellUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
     {
-        public event Action<InventoryCellUI, InventoryCellUI> OnItemDroppedIntoCell;
+        public event Action<ItemCellUI, ItemCellUI> OnItemDroppedIntoCell;
 
-        public event Action<InventoryCellUI> OnItemToBeDroppedIntoWorld;
+        public event Action<ItemCellUI> OnItemToBeDroppedIntoWorld;
 
         [SerializeField]
         private Image cellImage = default;
@@ -22,8 +22,6 @@ namespace Assets.DungeonRogue.Scripts.UI
         [SerializeField]
         private Color selectedColor = default;
 
-        private InventoryUI inventoryUI;
-
         private MutualDraggedItemUI draggedItemUI;
 
         private Canvas canvas;
@@ -32,8 +30,10 @@ namespace Assets.DungeonRogue.Scripts.UI
 
         private bool isCellEngagedMutualItem;
 
-        private bool CanBeginDrag => (iconImage.enabled == true) && 
+        private bool CanBeginDrag => (iconImage.enabled == true) &&
                                   (draggedItemUI.IsEngaged == false);
+
+        public abstract MutualDraggedItemUI GetDraggedItemUI();
 
         public void OnBeginDrag(PointerEventData eventData)
         {
@@ -91,13 +91,13 @@ namespace Assets.DungeonRogue.Scripts.UI
                 return;
             }
 
-            InventoryCellUI sourceInventoryCell = eventData.pointerDrag.GetComponent<InventoryCellUI>();
-            if (sourceInventoryCell == null)
+            ItemCellUI sourceIntemCell = eventData.pointerDrag.GetComponent<ItemCellUI>();
+            if (sourceIntemCell == null)
             {
                 return;
             }
 
-            OnItemDroppedIntoCell(sourceInventoryCell, this);
+            OnItemDroppedIntoCell(sourceIntemCell, this);
         }
 
         public void SetIcon(Sprite iconSprite)
@@ -109,12 +109,12 @@ namespace Assets.DungeonRogue.Scripts.UI
                 iconImage.enabled = false;
             }
             else
-            {                
+            {
                 iconImage.enabled = true;
             }
         }
 
-        private void Awake()
+        virtual protected void Awake()
         {
             Assert.IsNotNull(cellImage);
             Assert.IsNotNull(iconImage);
@@ -122,17 +122,14 @@ namespace Assets.DungeonRogue.Scripts.UI
             canvas = GetComponentInParent<Canvas>();
             Assert.IsNotNull(canvas);
 
-            inventoryUI = GetComponentInParent<InventoryUI>();
-            Assert.IsNotNull(inventoryUI);
-
             iconImage.sprite = null;
         }
 
-        private void Start()
+        virtual protected void Start()
         {
             initialCellColor = cellImage.color;
 
-            draggedItemUI = inventoryUI.DraggedItem;
+            draggedItemUI = GetDraggedItemUI();
 
             SetIcon(null);
         }
